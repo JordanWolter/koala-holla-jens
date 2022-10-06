@@ -25,7 +25,16 @@ koalaRouter.delete('/:id', (req, res) => {
                     "koala"
                     WHERE "id" = $1;`;
     const sqlParams = [koalaId];
-    
+
+    pool.query(sqlText, sqlParams)
+        .then((dbRes) => {
+            res.sendStatus(201);
+        })
+        .catch((err) => {
+            console.log('POST failed', err);
+            res.sendStatus(500);
+        })
+
 })
 
 module.exports = koalaRouter;

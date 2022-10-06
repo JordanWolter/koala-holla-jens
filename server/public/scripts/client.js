@@ -25,6 +25,8 @@ function setupClickListeners() {
     // call saveKoala with the new obejct
     saveKoala( koalaToSend );
   }); 
+
+  $('#viewKoalas').on('click', '.deleteBtn', deleteButton);
 }
 
 function getKoalas(){
@@ -39,14 +41,17 @@ function saveKoala( newKoala ){
  
 }
 
+
+//delete button function
 function deleteButton (){
   console.log('in delete', $(this).data('id'));
 
+  //setting table id on click
   let koallaId = $(this).data('id');
 
   $.ajax({
     method: 'DELETE',
-    url: `/koala/${koallaId}`
+    url: `/koalas/${koallaId}`
   })
   .then(function (response){
     console.log('koala terminated');
