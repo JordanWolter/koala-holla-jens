@@ -8,7 +8,7 @@ let readyOrNot;
 $( document ).ready( function(){
   console.log( 'JQ' );
   // Establish Click Listeners
-  // setupClickListeners()
+  setupClickListeners()
   $('#addButton').on('click', addKoala);
   // load existing koalas on page load
   getKoalas();
@@ -51,27 +51,28 @@ function addKoala(){
 }
 
 function setupClickListeners() {
-  $( '#addButton' ).on( 'click', function(){
-    console.log( 'in addButton on click' );
-    // get user input and put in an object
-    // NOT WORKING YET :(
-    // using a test object
-    let koalaToSend = {
-      name: 'testName',
-      age: 'testName',
-      gender: 'testName',
-      readyForTransfer: 'testName',
-      notes: 'testName',
-    };
+  // $( '#addButton' ).on( 'click', function(){
+  //   console.log( 'in addButton on click' );
+  //   // get user input and put in an object
+  //   // NOT WORKING YET :(
+  //   // using a test object
+  //   let koalaToSend = {
+  //     name: 'testName',
+  //     age: 'testName',
+  //     gender: 'testName',
+  //     readyForTransfer: 'testName',
+  //     notes: 'testName',
+  //   };
 
-    // Update transfer status
-    $(document).on('click', '.transferBtn', updateTransferStatus);
+  //   // Update transfer status
+    
 
-    // call saveKoala with the new obejct
-    saveKoala( koalaToSend );
-  }); 
+  //   // call saveKoala with the new obejct
+  //   saveKoala( koalaToSend );
+  // }); 
 
   $('#viewKoalas').on('click', '.deleteBtn', deleteButton);
+  $('#viewKoalas').on('click', '.transferBtn', updateTransferStatus);
 }
 function clearInputs(){
       $('#nameIn').val('');
@@ -108,7 +109,9 @@ function renderKoalas(koalas){
             <td>${koala.name}</td>
             <td>${koala.age}</td>
             <td>${koala.gender}</td>
-            <td>${koala.readyForTransfer}</td>
+            <td>${koala.readyForTransfer}
+                ${addButtonBasedOnTransferStatus(koala.readyForTransfer,koala.id)}
+            </td>
             <td>${koala.notes}</td>
         </tr>
     `);
@@ -137,8 +140,9 @@ function deleteButton (){
 };
 
 function updateTransferStatus() {
-  let koalaId = $(this).data('id');
   console.log('Update transfer status', $(this).data('id'));
+  let koalaId = $(this).data('id');
+  
 
   $.ajax({
     method: 'PUT',
@@ -150,3 +154,13 @@ function updateTransferStatus() {
     });
 };
  
+function addButtonBasedOnTransferStatus(readyForTrans,koalaId){
+  
+  if(readyForTrans){
+    return '';
+  }
+  else{
+    return `<button class="transferBtn" data-id="${koalaId}">Ready</button>`;
+  }
+  
+}
