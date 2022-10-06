@@ -48,9 +48,18 @@ function getKoalas(){
 function renderKoalas(koalas){
   console.log('in render Koalas',koalas);
 
-  // for(let koala in koalas){
-
-  // }
+  //render the table
+  for(let koala of koalas){
+    $('#viewKoalas').append(`
+        <tr>
+            <td>${koala.name}</td>
+            <td>${koala.age}</td>
+            <td>${koala.gender}</td>
+            <td>${koala.readyForTransfer}</td>
+            <td>${koala.notes}</td>
+        </tr>
+    `);
+  }
   
 }
 
