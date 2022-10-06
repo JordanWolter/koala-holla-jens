@@ -1,3 +1,5 @@
+
+
 console.log( 'js' );
 
 $( document ).ready( function(){
@@ -32,8 +34,37 @@ function setupClickListeners() {
 function getKoalas(){
   console.log( 'in getKoalas' );
   // ajax call to server to get koalas
+  $.ajax({
+    method: 'GET',
+    url: '/koalas'
+  })
+  .then((response)=>{
+    console.log('in ajax GET THEN');
+    renderKoalas(response);
+  })
+  .catch((err)=>{
+    console.log('in ajax GET catch');
+  });
   
 } // end getKoalas
+function renderKoalas(koalas){
+  console.log('in render Koalas',koalas);
+
+  //render the table
+  $('#viewKoalas').empty();
+  for(let koala of koalas){
+    $('#viewKoalas').append(`
+        <tr>
+            <td>${koala.name}</td>
+            <td>${koala.age}</td>
+            <td>${koala.gender}</td>
+            <td>${koala.readyForTransfer}</td>
+            <td>${koala.notes}</td>
+        </tr>
+    `);
+  }
+  
+}
 
 function saveKoala( newKoala ){
   console.log( 'in saveKoala', newKoala );
