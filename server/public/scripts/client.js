@@ -38,3 +38,23 @@ function saveKoala( newKoala ){
   // ajax call to server to get koalas
  
 }
+
+function deleteButton (){
+  console.log('in delete', $(this).data('id'));
+
+  let koallaId = $(this).data('id');
+
+  $.ajax({
+    method: 'DELETE',
+    url: `/koalla/${koallaId}`
+  })
+  .then(function (response){
+    console.log('koalla terminated');
+    getKoalas();
+  })
+  .catch(function (err) {
+    console.log('error on delete', err)
+  })
+};
+
+
