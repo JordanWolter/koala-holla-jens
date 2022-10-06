@@ -1,4 +1,4 @@
-const { response } = require("express");
+
 
 console.log( 'js' );
 
@@ -38,12 +38,17 @@ function getKoalas(){
   })
   .then((response)=>{
     console.log('in ajax GET THEN');
+    renderKoalas();
   })
   .catch((err)=>{
     console.log('in ajax GET catch');
   });
   
 } // end getKoalas
+function renderKoalas(){
+  console.log('in render Koalas');
+  
+}
 
 function saveKoala( newKoala ){
   console.log( 'in saveKoala', newKoala );
