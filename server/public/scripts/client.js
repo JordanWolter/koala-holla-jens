@@ -26,7 +26,7 @@ function setupClickListeners() {
 
     // Update transfer status
     $(document).on('click', '.transferBtn', updateTransferStatus);
-    
+
     // call saveKoala with the new obejct
     saveKoala( koalaToSend );
   }); 
@@ -50,7 +50,7 @@ function updateTransferStatus() {
 
   $.ajax({
     method: 'PUT',
-    url: `/koala/${koalaId}`, 
+    url: `/koalas/${koalaId}`, 
   })
     .then((response) => {
       console.log('Update status!');
