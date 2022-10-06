@@ -110,6 +110,7 @@ function renderKoalas(koalas){
             <td>${koala.gender}</td>
             <td>${koala.readyForTransfer}</td>
             <td>${koala.notes}</td>
+            <td><button class="deleteBtn" data-id=${koala.id}>☢️💣🔪🪓⚰️</button></td>
         </tr>
     `);
   }
