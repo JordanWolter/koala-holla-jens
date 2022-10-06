@@ -9,6 +9,7 @@ $( document ).ready( function(){
   // load existing koalas on page load
   getKoalas();
 
+
 }); // end doc ready
 
 function setupClickListeners() {
@@ -24,6 +25,10 @@ function setupClickListeners() {
       readyForTransfer: 'testName',
       notes: 'testName',
     };
+
+    // Update transfer status
+    $(document).on('click', '.transferBtn', updateTransferStatus);
+
     // call saveKoala with the new obejct
     saveKoala( koalaToSend );
   }); 
@@ -72,7 +77,6 @@ function saveKoala( newKoala ){
  
 }
 
-
 //delete button function
 function deleteButton (){
   console.log('in delete', $(this).data('id'));
@@ -93,4 +97,16 @@ function deleteButton (){
   })
 };
 
+function updateTransferStatus() {
+  let koalaId = $(this).data('id');
+  console.log('Update transfer status', $(this).data('id'));
 
+  $.ajax({
+    method: 'PUT',
+    url: `/koalas/${koalaId}`, 
+  })
+    .then((response) => {
+      console.log('Update status!');
+      getKoalas();
+    });
+};
