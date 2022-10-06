@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 console.log( 'js' );
 
 $( document ).ready( function(){
@@ -30,6 +32,16 @@ function setupClickListeners() {
 function getKoalas(){
   console.log( 'in getKoalas' );
   // ajax call to server to get koalas
+  $.ajax({
+    method: 'GET',
+    url: '/koalas'
+  })
+  .then((response)=>{
+    console.log('in ajax GET THEN');
+  })
+  .catch((err)=>{
+    console.log('in ajax GET catch');
+  });
   
 } // end getKoalas
 
