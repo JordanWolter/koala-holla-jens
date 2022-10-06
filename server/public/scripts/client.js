@@ -7,8 +7,6 @@ $( document ).ready( function(){
   // load existing koalas on page load
   getKoalas();
 
-  // Update transfer status
-  $(document).on('click', '.transferBtn', updateTransferStatus);
 
 }); // end doc ready
 
@@ -25,6 +23,10 @@ function setupClickListeners() {
       readyForTransfer: 'testName',
       notes: 'testName',
     };
+
+    // Update transfer status
+    $(document).on('click', '.transferBtn', updateTransferStatus);
+    
     // call saveKoala with the new obejct
     saveKoala( koalaToSend );
   }); 
