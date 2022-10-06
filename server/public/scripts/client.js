@@ -46,10 +46,10 @@ function deleteButton (){
 
   $.ajax({
     method: 'DELETE',
-    url: `/koalla/${koallaId}`
+    url: `/koala/${koallaId}`
   })
   .then(function (response){
-    console.log('koalla terminated');
+    console.log('koala terminated');
     getKoalas();
   })
   .catch(function (err) {
