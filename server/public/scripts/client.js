@@ -38,15 +38,19 @@ function getKoalas(){
   })
   .then((response)=>{
     console.log('in ajax GET THEN');
-    renderKoalas();
+    renderKoalas(response);
   })
   .catch((err)=>{
     console.log('in ajax GET catch');
   });
   
 } // end getKoalas
-function renderKoalas(){
-  console.log('in render Koalas');
+function renderKoalas(koalas){
+  console.log('in render Koalas',koalas);
+
+  // for(let koala in koalas){
+
+  // }
   
 }
 
