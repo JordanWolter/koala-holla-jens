@@ -38,3 +38,18 @@ function saveKoala( newKoala ){
   // ajax call to server to get koalas
  
 }
+
+function updateTransferStatus() {
+  console.log('Update transfer status');
+
+  let koalaId = $(this).data('id');
+
+  $.ajax({
+    method: 'PUT',
+    url: `/koala/${koalaId}`, 
+  })
+    .then((response) => {
+      console.log('Update status!');
+      getKoalas();
+    })
+}
