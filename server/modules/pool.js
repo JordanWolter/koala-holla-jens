@@ -1,5 +1,5 @@
 const pg = require('pg');
-const { copy } = require('../routes/koala.router');
+
 
 const config = {
     database: 'awesome_reads',
