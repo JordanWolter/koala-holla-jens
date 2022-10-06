@@ -13,12 +13,13 @@ const pool = require('../modules/pool');
 
 // PUT
 koalaRouter.put('/:id', (req, res) => {
-    console.log('in PUT', req.params.id);
     let koalaId = req.params.id;
+    console.log('in PUT', koalaId);
 
     const sqlText = `
     UPDATE "koala"
-    SET "readyForTransfer" = 
+    SET "readyForTransfer" = NOT "readyForTransfer"
+    WHERE "id" = $1;
     `;
 
     pool.query(sqlText, [koalaId])

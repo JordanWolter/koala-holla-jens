@@ -7,6 +7,9 @@ $( document ).ready( function(){
   // load existing koalas on page load
   getKoalas();
 
+  // Update transfer status
+  $(document).on('click', '.transferBtn', updateTransferStatus);
+
 }); // end doc ready
 
 function setupClickListeners() {
@@ -40,9 +43,8 @@ function saveKoala( newKoala ){
 }
 
 function updateTransferStatus() {
-  console.log('Update transfer status');
-
   let koalaId = $(this).data('id');
+  console.log('Update transfer status', $(this).data('id'));
 
   $.ajax({
     method: 'PUT',
@@ -51,5 +53,5 @@ function updateTransferStatus() {
     .then((response) => {
       console.log('Update status!');
       getKoalas();
-    })
-}
+    });
+};
