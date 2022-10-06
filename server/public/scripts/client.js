@@ -8,7 +8,7 @@ let readyOrNot;
 $( document ).ready( function(){
   console.log( 'JQ' );
   // Establish Click Listeners
-  // setupClickListeners()
+  setupClickListeners()
   $('#addButton').on('click', addKoala);
   // load existing koalas on page load
   getKoalas();
@@ -110,7 +110,7 @@ function renderKoalas(koalas){
             <td>${koala.gender}</td>
             <td>${koala.readyForTransfer}</td>
             <td>${koala.notes}</td>
-            <td><button class="deleteBtn" data-id=${koala.id}>☢️💣🔪🪓⚰️</button></td>
+            <td><button class="deleteBtn" data-id="${koala.id}">☢️💣🔪🪓⚰️</button></td>
         </tr>
     `);
   }
