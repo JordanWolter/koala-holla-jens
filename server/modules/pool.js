@@ -2,7 +2,7 @@ const pg = require('pg');
 
 
 const config = {
-    database: 'awesome_reads',
+    database: 'Koalla_holla',
     host: 'localhost',
     port: 5432,
 };
