@@ -49,6 +49,7 @@ function renderKoalas(koalas){
   console.log('in render Koalas',koalas);
 
   //render the table
+  $('#viewKoalas').empty();
   for(let koala of koalas){
     $('#viewKoalas').append(`
         <tr>
