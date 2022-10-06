@@ -18,9 +18,11 @@ function addKoala(){
   console.log('addingKoala');
   if($('#readyForTransferIn').val() === 'true' ){
     readyOrNot = true;
+    console.log('readyOrNot is' , readyOrNot);
   }
   else{
     readyOrNot = false;
+    console.log('readyOrNot is', readyOrNot);
   }
   let newKoala = {
     name: $('#nameIn').val(),
@@ -31,18 +33,28 @@ function addKoala(){
   }
   console.log("newKoala is", newKoala);
   $.ajax({
-    url:'/koala',
+    url:'/koalas',
     method: 'POST',
     data: newKoala
   })
     .then(response=>{
       console.log('sending Koala', response);
+      clearInputs();
+      getKoalas();
+
     })
     .catch(err=>{
       console.log('there was an error in addKoala', err);
     })
 }
 
+function clearInputs(){
+      $('#nameIn').val('');
+      $('#ageIn').val('');
+      $('#genderIn').val('');
+      $('#readyForTransferIn').val('');
+      $('#notesIn').val('');
+};
 
 // function setupClickListeners() {
 //   $( '#addButton' ).on( 'click', function(){
